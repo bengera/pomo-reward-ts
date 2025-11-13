@@ -1,7 +1,13 @@
 import Lottie from "lottie-react";
 import animationData from "../success.json";
 
-export function Modal({ currentClaim, selectedQuote, setOverlay }) {
+type ModalProps = {
+  currentClaim: { description: string };
+  selectedQuote: { quote: string; author: string };
+  setOverlay: (value: boolean) => void; // describing a function (function type)
+};
+
+export function Modal({ currentClaim, selectedQuote, setOverlay }: ModalProps) {
   return (
     <div className="modal-box">
       <p className="modal-title">{currentClaim.description}</p>

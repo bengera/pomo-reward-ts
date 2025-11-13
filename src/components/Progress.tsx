@@ -1,4 +1,9 @@
-export function Progress({ children }) {
+/**
+ * Progress component displays session statistics and renders its children.
+ *
+ * @param children - React nodes to be rendered inside the stats container.
+ */
+export function Progress({ children }: { children: React.ReactNode }) {
   return (
     <div className="stats-container">
       <h2 className="stats">Stats</h2>

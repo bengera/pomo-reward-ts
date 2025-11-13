@@ -1,4 +1,4 @@
-export function MoneyCounter({ money }) {
+export function MoneyCounter({ money }: { money: number }) {
   return (
     <div className="amount">
       <div className="amount__coin-container">
