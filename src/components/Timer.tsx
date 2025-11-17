@@ -1,4 +1,16 @@
-export function Timer({ timeLeft, timerRunning, setTimerRunning, Reset }) {
+type TimerProps = {
+  timeLeft: number;
+  timerRunning: boolean;
+  setTimerRunning: (value: boolean) => void;
+  Reset: () => void;
+};
+
+export function Timer({
+  timeLeft,
+  timerRunning,
+  setTimerRunning,
+  Reset,
+}: TimerProps) {
   return (
     <>
       <p className="timer-count">

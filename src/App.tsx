@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 
 import { Header } from "./components/Header";
 import { Timer } from "./components/Timer";
@@ -33,7 +33,7 @@ function App() {
   const [selectedQuote, setSelectedQuote] = useState("");
   const allQuotes = quotations;
 
-  function Main({ children }) {
+  function Main({ children }: { children: ReactNode }) {
     return <main className="main">{children}</main>;
   }
 

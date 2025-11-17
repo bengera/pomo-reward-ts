@@ -1,12 +1,22 @@
-export function ChooseTimes({ setTimeLeft, setResetTime, timerRunning }) {
-  function setChosenTime(time) {
+type ChooseTimesProps = {
+  setTimeLeft: (value: number) => void;
+  setResetTime: (value: number) => void;
+  timerRunning: boolean;
+};
+
+export function ChooseTimes({
+  setTimeLeft,
+  setResetTime,
+  timerRunning,
+}: ChooseTimesProps) {
+  function setChosenTime(time: string) {
     const [minutes, seconds] = time.split(":").map(Number);
     const total = minutes * 60 + seconds;
     setTimeLeft(total);
     setResetTime(total);
   }
 
-  const times = [
+  const times: string[] = [
     // "00:03", // only for testing
     "2:00",
     "5:00",

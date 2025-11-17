@@ -1,4 +1,4 @@
-export function PomoCounter({ counter }) {
+export function PomoCounter({ counter }: { counter: number }) {
   return (
     <div className="pomo-counter">
       <h2>✅ Pomdoros Completed: {counter}</h2>

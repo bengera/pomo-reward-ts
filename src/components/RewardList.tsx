@@ -1,6 +1,27 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
+type Reward = {
+  id: string;
+  description: string;
+  category: "reward";
+  price: number;
+};
+
+type RewardListProps = {
+  rewards: Reward[];
+  setRewards: (value: Reward[] | ((prev: Reward[]) => Reward[])) => void;
+  setMoney: (value: number | ((prev: number) => number)) => void;
+  setRewardsCounter: (value: number | ((prev: number) => number)) => void;
+  money: number;
+  timerRunning: boolean;
+  timeLeft: number;
+  setOverlay: (value: boolean) => void;
+  setCurrentClaim: (value: Reward) => void;
+  allQuotes: string[];
+  setSelectedQuote: (value: string) => void;
+};
+
 export function RewardList({
   rewards,
   setRewards,
@@ -13,14 +34,14 @@ export function RewardList({
   setCurrentClaim,
   allQuotes,
   setSelectedQuote,
-}) {
+}: RewardListProps) {
   const [newReward, setNewReward] = useState("");
   const [amount, setAmount] = useState("5");
   const inputReward = useRef(null);
 
   useEffect(
     function () {
-      function callback(e) {
+      function callback(e: KeyboardEvent) {
         if (timerRunning) return;
         if (e.code === "Enter") {
           console.log("Enter key pressed");
@@ -36,7 +57,7 @@ export function RewardList({
     [timerRunning]
   );
 
-  function addNewReward(e) {
+  function addNewReward(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (rewards.length > 7 && newReward) {
       alert("Rewards list is full");
