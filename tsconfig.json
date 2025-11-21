@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "target": "ES2020", // version of JS to compile
+    "module": "ESNext", // defines how modules are generatied( ES NEXT suitable for modern bundler like vite)
+    "moduleResolution": "Bundler", // Assume vite / webpack handles imports
     "jsx": "react-jsx",
 
-    "strict": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "strict": true, // turns on all strict rules, keep on
+    "noImplicitAny": true, // do not lets unkown types default to 'any'
+    "skipLibCheck": true, // dont check every installed library like node_modules
+    "isolatedModules": true, // forces files to be valid on their own
+    "esModuleInterop": true, // alows nicer import syntax
+    "resolveJsonModule": true // allows importing JSON files
   },
-  "include": ["src"]
+  "include": ["src"] // only look inside src folder
 }
 
-//npx tsc --noEmit
+//npx tsc --noEmit - type checking without output

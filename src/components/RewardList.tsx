@@ -1,26 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
-
-type Reward = {
-  id: string;
-  description: string;
-  category: "reward";
-  price: number;
-};
-
-type RewardListProps = {
-  rewards: Reward[];
-  setRewards: (value: Reward[] | ((prev: Reward[]) => Reward[])) => void;
-  setMoney: (value: number | ((prev: number) => number)) => void;
-  setRewardsCounter: (value: number | ((prev: number) => number)) => void;
-  money: number;
-  timerRunning: boolean;
-  timeLeft: number;
-  setOverlay: (value: boolean) => void;
-  setCurrentClaim: (value: Reward) => void;
-  allQuotes: string[];
-  setSelectedQuote: (value: string) => void;
-};
+import type { RewardListProps } from "../types";
 
 export function RewardList({
   rewards,
@@ -37,7 +17,7 @@ export function RewardList({
 }: RewardListProps) {
   const [newReward, setNewReward] = useState("");
   const [amount, setAmount] = useState("5");
-  const inputReward = useRef(null);
+  const inputReward = useRef<HTMLInputElement | null>(null); // Ref for the input field so that it can be focused with TS
 
   useEffect(
     function () {

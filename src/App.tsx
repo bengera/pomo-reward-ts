@@ -19,7 +19,7 @@ import "./sass/modal.scss";
 
 function App() {
   const [overlay, setOverlay] = useState(false);
-  const [rewards, setRewards] = useState(function () {
+  const [rewards, setRewards] = useState(() => {
     const storedReward = localStorage.getItem("rewards");
     return storedReward ? JSON.parse(storedReward) : [];
   });
@@ -38,7 +38,6 @@ function App() {
   }
 
   function Reset() {
-    console.log("Resetting Timer");
     setTimerRunning(false);
     setTimeLeft(resetTime);
   }
