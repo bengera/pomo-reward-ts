@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import type { RewardListProps } from "../types";
+import { Reward, Quote } from "../types";
 
 export function RewardList({
   rewards,
@@ -46,7 +47,7 @@ export function RewardList({
 
     if (!newReward.trim()) return;
 
-    const newItem = {
+    const newItem: Reward = {
       id: crypto.randomUUID(),
       description: newReward,
       category: "reward",
@@ -56,20 +57,20 @@ export function RewardList({
     setNewReward("");
   }
 
-  function handleClaim(itemToClaim) {
+  function handleClaim(itemToClaim: Reward) {
     if (money < itemToClaim.price) return;
     setRewardsCounter((prev) => prev + 1);
     setOverlay(true);
-    setCurrentClaim(itemToClaim);
+    setCurrentClaim(itemToClaim); // error because setCurrentClaim expects an array of Reward rather than a single Reward
     const updatedArr = rewards.filter((item) => item.id !== itemToClaim.id);
     setRewards(updatedArr);
     setMoney((prev) => prev - itemToClaim.price);
     const randomQuote = Math.floor(Math.random() * allQuotes.length);
-    console.log(randomQuote);
+    // console.log(randomQuote);
     setSelectedQuote(allQuotes[randomQuote]);
   }
 
-  function handleDelete(itemToRemove) {
+  function handleDelete(itemToRemove: Reward) {
     const updatedArr = rewards.filter(
       (rewardItem) => rewardItem.id !== itemToRemove.id
     );

@@ -1,4 +1,5 @@
 import { useEffect, useState, ReactNode } from "react";
+import type { Reward } from "./types";
 
 import { Header } from "./components/Header";
 import { Timer } from "./components/Timer";
@@ -10,6 +11,7 @@ import { RewardCounter } from "./components/RewardsCounter";
 import { Progress } from "./components/Progress";
 import { Credit } from "./components/Credit";
 import { Modal } from "./components/Modal";
+import type { Quote } from "./types";
 import quotations from "./quotes.json";
 /*CSS */
 import "./sass/app.scss";
@@ -29,9 +31,9 @@ function App() {
   const [resetTime, setResetTime] = useState(0);
   const [counter, setCounter] = useState(0);
   const [money, setMoney] = useState(35);
-  const [currentClaim, setCurrentClaim] = useState("");
-  const [selectedQuote, setSelectedQuote] = useState("");
-  const allQuotes = quotations;
+  const [currentClaim, setCurrentClaim] = useState<Reward | null>(null); // Null because no claim initially. First null isn type definition, second is initial state
+  const allQuotes: Quote[] = quotations;
+  const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
 
   function Main({ children }: { children: ReactNode }) {
     return <main className="main">{children}</main>;
@@ -98,7 +100,7 @@ function App() {
             setTimeLeft={setTimeLeft}
             setResetTime={setResetTime}
             timerRunning={timerRunning}
-            setTimerRunning={setTimerRunning}
+            // setTimerRunning={setTimerRunning}
           />
         </Main>
 

@@ -1,6 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-type Reward = {
+export type Quote = {
+  quote: string;
+  author: string;
+};
+
+export type Reward = {
   id: string;
   description: string;
   category: "reward";
@@ -22,7 +27,7 @@ export type RewardListProps = {
   timeLeft: number;
 
   setOverlay: Dispatch<SetStateAction<boolean>>;
-  setCurrentClaim: Dispatch<SetStateAction<Reward[]>>;
-  allQuotes: string[];
-  setSelectedQuote: Dispatch<SetStateAction<string>>;
+  setCurrentClaim: Dispatch<SetStateAction<Reward | null>>; // null because initial state is null
+  allQuotes: Quote[];
+  setSelectedQuote: Dispatch<SetStateAction<Quote | null>>;
 };
